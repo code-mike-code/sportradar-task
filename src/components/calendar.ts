@@ -58,7 +58,7 @@ export function renderCalendar(container: HTMLElement): void {
             
             document.getElementById('prev-month')!.addEventListener('click', () => {
                 currentMonth--
-                if (currentMonth < 0) { currentMonth = 11; currentMonth-- }
+                if (currentMonth < 0) { currentMonth = 11; currentYear-- }
                 render()
             })
 

@@ -35,8 +35,32 @@ export function renderCalendar(container: HTMLElement): void {
 
         const events = getEvents()
 
+        const competitions = [...new Set(events.map(e => e.originCompetitionName))]
+        const activeStatus = (container.querySelector('#filter-status') as HTMLSelectElement)?.value ?? 'all'
+        const activeCompetition = (container.querySelector('#filter-competition') as HTMLSelectElement)?.value ?? 'all'
+
+        const filteredEvents = events.filter(e => {
+            const statusMatch = activeStatus === 'all' || e.status === activeStatus
+            const competitionMatch = activeCompetition === 'all' || e.originCompetitionName === activeCompetition
+            return statusMatch && competitionMatch
+        })
+
+
         container.innerHTML = `
             <div class="calendar">
+
+                <div class="filters">
+                    <select id="filter-status">
+                        <option value="all">All statuses</option>
+                        <option value="scheduled">Scheduled</option>
+                        <option value="played">Played</option>
+                    </select>
+                    <select id="filter-competition">
+                        <option value="all">All competitions</option>
+                        ${competitions.map(c => `<option value="${c}">${c}</option>`).join  ('')}
+                    </select>
+                </div>
+
                 <div class="calendar-header">
                 <button id="prev-month">&#8592;</button>
                 <h2>${monthName} ${currentYear}</h2>
@@ -57,7 +81,7 @@ export function renderCalendar(container: HTMLElement): void {
                     const dayStr = String(day).padStart(2, '0')              // 3 → "03"
                     const dateStr = `${currentYear}-${month}-${dayStr}`
 
-                    const dayEvents = events.filter(e => e.dateVenue === dateStr)
+                    const dayEvents = filteredEvents.filter(e => e.dateVenue === dateStr)
                     const hasEvents = dayEvents.length > 0
 
                     return `
@@ -81,6 +105,10 @@ export function renderCalendar(container: HTMLElement): void {
                 currentMonth++
                 if (currentMonth > 11) { currentMonth = 0; currentYear++ }
                 render()
+            })
+
+            container.querySelectorAll('.filters select').forEach(select => {
+                select.addEventListener('change', () => render())
             })
 
             container.querySelectorAll('.day-cell.has-events').forEach(cell => {

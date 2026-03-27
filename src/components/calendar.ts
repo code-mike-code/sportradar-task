@@ -1,7 +1,7 @@
 import { getEvents } from '../services/eventService'
 // import type { SportEvent } from '../types/events'
 
-function getCalendarDays(year: number, month: number): (number | null)[] {
+export function getCalendarDays(year: number, month: number): (number | null)[] {
     const firstDay = new Date(year, month, 1).getDay() // 0=sunday, 1=monday
     const daysInMonth = new Date(year, month + 1, 0).getDate() // how many days is in a month
 

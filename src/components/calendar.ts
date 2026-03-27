@@ -1,5 +1,5 @@
 import { getEvents } from '../services/eventService'
-import type { SportEvent } from '../types/events'
+// import type { SportEvent } from '../types/events'
 
 function getCalendarDays(year: number, month: number): (number | null)[] {
     const firstDay = new Date(year, month, 1).getDay() // 0=sunday, 1=monday
@@ -33,6 +33,8 @@ export function renderCalendar(container: HTMLElement): void {
         const days = getCalendarDays(currentYear, currentMonth)
         const monthName = new Date(currentYear, currentMonth).toLocaleDateString('en', { month: 'long'})
 
+        const events = getEvents()
+
         container.innerHTML = `
             <div class="calendar">
                 <div class="calendar-header">
@@ -48,10 +50,23 @@ export function renderCalendar(container: HTMLElement): void {
                 <div class="day-label">Fri</div>
                 <div class="day-label">Sat</div>
                 <div class="day-label">Sun</div>
-                ${days.map(day => day === null
-                    ? `<div class="day-cell empty"></div>`
-                    : `<div class="day-cell">${day}</div>`
-                ).join('')}
+                ${days.map(day => {
+                    if (day === null) return `<div class="day-cell empty"></div>`
+
+                    const month = String(currentMonth + 1).padStart(2, '0')  // 1 → "01"
+                    const dayStr = String(day).padStart(2, '0')              // 3 → "03"
+                    const dateStr = `${currentYear}-${month}-${dayStr}`
+
+                    const dayEvents = events.filter(e => e.dateVenue === dateStr)
+                    const hasEvents = dayEvents.length > 0
+
+                    return `
+                        <div class="day-cell ${hasEvents ? 'has-events' : ''}" data-date="${dateStr}">
+                        <span class="day-number">${day}</span>
+                        ${hasEvents ? `<span class="event-dot"></span>` : ''}
+                        </div>
+                    `
+                    }).join('')}
                 </div>
             </div>
             `

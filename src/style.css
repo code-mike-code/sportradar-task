@@ -305,3 +305,99 @@ body {
   color: #2e7d32;
   font-weight: 600;
 }
+
+
+/* ── Responsive ── */
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  .calendar {
+    margin: 1.5rem;
+  }
+
+  .detail-card {
+    margin: 0 1.5rem 2rem;
+  }
+
+  .form-wrapper {
+    margin: 1.5rem;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 0.95rem;
+  }
+
+  .nav-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+  }
+
+    .calendar {
+    margin: 1rem;
+    border-radius: 8px;
+  }
+
+  .calendar-header {
+    padding: 1rem;
+  }
+
+  .calendar-header h2 {
+    font-size: 1rem;
+  }
+
+  .day-cell {
+    min-height: 44px;
+    padding: 0.25rem;
+  }
+
+  .day-number {
+    font-size: 0.75rem;
+  }
+
+  .day-label {
+    font-size: 0.65rem;
+    padding: 0.5rem 0;
+  }
+
+  .detail-card {
+    margin: 0 1rem 2rem;
+    border-radius: 8px;
+  }
+
+  .detail-matchup {
+    font-size: 1.1rem;
+    padding: 1.25rem;
+  }
+
+  .detail-info {
+    padding: 1rem;
+  }
+
+  .form-wrapper {
+    margin: 1rem;
+    padding: 1.25rem;
+    border-radius: 8px;
+  }
+}
+
+/* Small mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .calendar-header button {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85rem;
+  }
+
+  .detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

@@ -82,6 +82,17 @@ export function renderCalendar(container: HTMLElement): void {
                 if (currentMonth > 11) { currentMonth = 0; currentYear++ }
                 render()
             })
+
+            container.querySelectorAll('.day-cell.has-events').forEach(cell => {
+                cell.addEventListener('click', () => {
+                    const date = (cell as HTMLElement).dataset.date!
+                    const dayEvents = events.filter(e => e.dateVenue === date)
+
+                    import('./eventDetail').then(({ renderEventDetail }) => {
+                        renderEventDetail(container, dayEvents[0])
+                    })
+                })
+            })
     }
     render()
 }

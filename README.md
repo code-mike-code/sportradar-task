@@ -48,19 +48,23 @@ npm test
 
 ## Features
 
-- Calendar view for the current month with event markers
-- Event detail page
-- Add new events at runtime (session only, no persistence)
+- Calendar view for the current month with event markers on days that have events
+- Navigate between months using previous/next arrows
+- Filter events by status (All / Scheduled / Played) and competition
+- Event detail page — click on a marked day to see full event information
+- Add new events at runtime via a form
+- Custom events are persisted to localStorage and restored on next visit
 - Responsive design for mobile, tablet, and desktop
-- Navigation between views
+- Navigation bar accessible from all views
 
 ## Project Structure
 
 ```
 src/
-├── components/   — UI components
+├── components/   — UI components (calendar, eventDetail, addEventForm, navbar)
 ├── data/         — mock data (data.json)
 ├── services/     — data loading and business logic
+├── styles/       — animations and responsive CSS
 └── types/        — TypeScript interfaces
 tests/            — Jest unit tests
 ```
@@ -68,5 +72,7 @@ tests/            — Jest unit tests
 ## Assumptions & Decisions
 
 - Data is loaded from a local JSON file (mock database) as specified in the task
-- New events added at runtime are not persisted — they exist only for the current session
+- Custom events added at runtime are saved to localStorage and persist between sessions
 - Navigation is handled client-side without a router library to keep dependencies minimal
+- Week starts on Monday (European convention)
+- No sport type field in the provided data — sport filter was not implemented

@@ -24,6 +24,13 @@ body {
   min-height: 100svh;
 }
 
+#app {
+  background: rgba(245, 245, 245, 0.5);
+  min-height: calc(100svh - 60px);
+  padding-top: 1px;
+}
+
+
 /* Calendar */
 .calendar {
   max-width: 800px;

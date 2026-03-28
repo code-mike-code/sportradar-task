@@ -2,6 +2,10 @@
 
 A frontend application built as part of the Sportradar Coding Academy recruitment exercise.
 
+## Preview
+
+![App preview on multiple screen sizes](src/assets/rwd-mockup-for%20readme.png)
+
 ## Overview
 
 A sports event calendar that displays events, allows users to view event details, and lets users add new events during runtime.

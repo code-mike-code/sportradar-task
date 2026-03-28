@@ -388,3 +388,36 @@ body {
     gap: 0.5rem;
   }
 }
+
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.calendar,
+.event-detail,
+.form-wrapper {
+  animation: fadeIn 0.3s ease-out;
+}
+.day-cell {
+  transition: background 0.2s ease;
+}
+.day-cell.has-events:hover {
+  transform: scale(1.05);
+  transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 1;
+  position: relative;
+}
+.nav-btn {
+  transition: all 0.2s ease;
+}
+.submit-btn {
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+.submit-btn:active {
+  transform: scale(0.98);
+}
+.back-btn {
+  transition: color 0.2s ease;
+}

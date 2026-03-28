@@ -3,7 +3,7 @@ import { renderCalendar } from './calendar'
 export function renderNavbar(container: HTMLElement, appContainer: HTMLElement): void {
   container.innerHTML = `
     <nav class="navbar">
-      <div class="navbar-brand">⚽ Sports Calendar</div>
+      <div class="navbar-brand">Sports Calendar</div>
       <div class="navbar-links">
         <button class="nav-btn active" data-view="calendar">Calendar</button>
         <button class="nav-btn" data-view="add-event">Add Event</button>

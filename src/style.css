@@ -1,5 +1,8 @@
-*, 
-*::before, 
+@import './styles/animations.css';
+@import './styles/responsive.css';
+
+*,
+*::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
@@ -21,6 +24,7 @@ body {
   min-height: 100svh;
 }
 
+/* Calendar */
 .calendar {
   max-width: 800px;
   margin: 2rem auto;
@@ -101,12 +105,37 @@ body {
   margin: 4px auto 0;
 }
 
-/* event details  */
+/* Filters */
+.filters {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: #f9f9f9;
+  border-bottom: 1px solid #e0e0e0;
+  flex-wrap: wrap;
+}
+.filters select {
+  padding: 0.45rem 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  background: var(--color-white);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.filters select:focus {
+  border-color: var(--color-accent);
+}
+
+/* Event Detail */
 .back-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   background: none;
+  border: none;
   color: var(--color-primary);
   font-size: 0.95rem;
   cursor: pointer;
@@ -167,7 +196,7 @@ body {
   margin: 0 0.5rem;
 }
 
-/*  navbar  */
+/* Navbar */
 .navbar {
   display: flex;
   align-items: center;
@@ -270,154 +299,4 @@ body {
 .form-success {
   color: #2e7d32;
   font-weight: 600;
-}
-
-/* Filters */
-.filters {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  background: #f9f9f9;
-  border-bottom: 1px solid #e0e0e0;
-  flex-wrap: wrap;
-}
-.filters select {
-  padding: 0.45rem 0.75rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  color: var(--color-primary);
-  background: var(--color-white);
-  cursor: pointer;
-  outline: none;
-  transition: border-color 0.2s;
-}
-.filters select:focus {
-  border-color: var(--color-accent);
-}
-
-/* ── Responsive ── */
-
-/* Tablet (≤ 1024px) */
-@media (max-width: 1024px) {
-  .calendar {
-    margin: 1.5rem;
-  }
-  .detail-card {
-    margin: 0 1.5rem 2rem;
-  }
-  .form-wrapper {
-    margin: 1.5rem;
-  }
-}
-
-/* Mobile (≤ 768px) */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 0 1rem;
-    height: 68px;
-  }
-  .navbar-brand {
-    font-size: 1rem;
-  }
-  .nav-btn {
-    padding: 0.55rem 1rem;
-    font-size: 0.9rem;
-  }
-  .calendar {
-    margin: 1rem;
-    border-radius: 8px;
-  }
-  .calendar-header {
-    padding: 1rem;
-  }
-  .calendar-header h2 {
-    font-size: 1rem;
-  }
-  .calendar-header button {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
-  }
-  .day-cell {
-    min-height: 60px;
-    padding: 0.35rem;
-  }
-  .day-number {
-    font-size: 0.8rem;
-  }
-  .day-label {
-    font-size: 0.65rem;
-    padding: 0.5rem 0;
-  }
-  .event-dot {
-    width: 8px;
-    height: 8px;
-    margin: 3px auto 0;
-  }
-  .detail-card {
-    margin: 0 1rem 2rem;
-    border-radius: 8px;
-  }
-  .detail-matchup {
-    font-size: 1.1rem;
-    padding: 1.25rem;
-  }
-  .detail-info {
-    padding: 1rem;
-  }
-  .form-wrapper {
-    margin: 1rem;
-    padding: 1.25rem;
-    border-radius: 8px;
-  }
-}
-
-/* Small mobile (≤ 480px) */
-@media (max-width: 480px) {
-  .navbar {
-    height: 72px;
-  }
-  .nav-btn {
-    padding: 0.6rem 1.1rem;
-    font-size: 0.95rem;
-  }
-  .detail-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-}
-
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.calendar,
-.event-detail,
-.form-wrapper {
-  animation: fadeIn 0.3s ease-out;
-}
-.day-cell {
-  transition: background 0.2s ease;
-}
-.day-cell.has-events:hover {
-  transform: scale(1.05);
-  transition: background 0.2s ease, transform 0.2s ease;
-  z-index: 1;
-  position: relative;
-}
-.nav-btn {
-  transition: all 0.2s ease;
-}
-.submit-btn {
-  transition: background 0.2s ease, transform 0.1s ease;
-}
-.submit-btn:active {
-  transform: scale(0.98);
-}
-.back-btn {
-  transition: color 0.2s ease;
 }

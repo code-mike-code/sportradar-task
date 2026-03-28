@@ -24,7 +24,7 @@ export function renderNavbar(container: HTMLElement, appContainer: HTMLElement):
       if (view === 'calendar') {
         renderCalendar(appContainer)
       } else if (view === 'add-event') {
-        import('./addEventForm').then(({ renderAddEventForm }) => {
+        import('./addEventForm.ts').then(({ renderAddEventForm }) => {
           renderAddEventForm(appContainer)
         })
       }
